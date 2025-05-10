@@ -1,0 +1,2 @@
+# Real-Time-Earthquake-Visualizer
+ This Python application retrieves real-time earthquake data from the USGS API and visualizes recent seismic activity on a world map using Cartopy and Matplotlib. It fetches GeoJSON-formatted data for all earthquakes from the past week, plots their locations based on coordinates, and dynamically scales marker size and color based on magnitude. The tool is useful for quick geospatial analysis of seismic trends and can be easily adapted to different timeframes (daily, hourly, etc.).
