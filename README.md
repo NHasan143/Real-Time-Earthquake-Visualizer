@@ -1,22 +1,41 @@
-# Real-Time-Earthquake-Visualizer
-# 🌍 Real-Time Earthquake Visualizer
+﻿# 🌍 Real-Time Earthquake Visualizer
 
-This Python application retrieves and visualizes real-time earthquake data from the [USGS Earthquake API](https://earthquake.usgs.gov/). It uses `requests` to fetch earthquake data in GeoJSON format and leverages `Matplotlib` with `Cartopy` to render an interactive world map.
+This Python project visualizes recent earthquake activity across the globe using real-time data from the USGS Earthquake Hazards Program. The tool fetches earthquake data from the past hour, day, week, or month and plots it on a world map using `matplotlib` and `cartopy`.
 
-## 📊 Features
 
-- Fetches real-time earthquake data from USGS (past 7 days by default)
-- Plots global earthquake locations on a geospatial map
-- Dynamically adjusts marker size and color based on earthquake magnitude
-- Supports easy customization for different timeframes (e.g., hourly, daily)
+### 📌 Features
 
-## 🧰 Dependencies
+-   Retrieves real-time earthquake data via USGS GeoJSON feeds.
+-   Supports different timeframes: past hour, day, week, or month.
+-   Plots earthquake locations on a world map with magnitude-based color coding.
+-   Customizable output: save plots as image files.
+-   Error-handling for network/API issues and malformed data.
 
-- `requests`
-- `matplotlib`
-- `cartopy`
+### 🧰 Dependencies Used
 
-You can install them via pip:
+-   Python 3.7+
+-   `matplotlib`
+-   `cartopy`
+-   `numpy`
+-   `requests`
 
-```bash
-pip install requests matplotlib cartopy
+
+### 📈 Legend
+
+Magnitude is visually encoded by color and size:
+
+🟡 Yellow: Magnitude < 3
+🟠 Orange: Magnitude 3–5
+🔴 Red: Magnitude ≥ 5
+
+All your files and folders are presented as a tree in the file explorer. You can switch from one to another by clicking a file in the tree.
+
+### 📃 License
+
+This project is licensed under the MIT License.
+
+
+Author: Naymul Hasan
+Linkedin: https://www.linkedin.com/in/naymulhasan143/
+Blog: https://naymulhasan.hashnode.dev/
+
