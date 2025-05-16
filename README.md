@@ -35,7 +35,7 @@ All your files and folders are presented as a tree in the file explorer. You can
 This project is licensed under the MIT License.
 
 
-Author: Naymul Hasan
+Author: Naymul Hasan  
 Linkedin: https://www.linkedin.com/in/naymulhasan143/  
 Blog: https://naymulhasan.hashnode.dev/
 
