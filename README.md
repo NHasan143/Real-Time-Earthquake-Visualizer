@@ -24,8 +24,8 @@ This Python project visualizes recent earthquake activity across the globe using
 
 Magnitude is visually encoded by color and size:
 
-🟡 Yellow: Magnitude < 3
-🟠 Orange: Magnitude 3–5
+🟡 Yellow: Magnitude < 3  
+🟠 Orange: Magnitude 3–5  
 🔴 Red: Magnitude ≥ 5
 
 All your files and folders are presented as a tree in the file explorer. You can switch from one to another by clicking a file in the tree.
@@ -36,6 +36,6 @@ This project is licensed under the MIT License.
 
 
 Author: Naymul Hasan
-Linkedin: https://www.linkedin.com/in/naymulhasan143/
+Linkedin: https://www.linkedin.com/in/naymulhasan143/  
 Blog: https://naymulhasan.hashnode.dev/
 
