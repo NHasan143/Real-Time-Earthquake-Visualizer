@@ -2,7 +2,6 @@ import requests
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
-import numpy as np
 import logging
 import argparse
 from matplotlib.lines import Line2D
@@ -37,7 +36,8 @@ def plot_earthquakes(data):
     # Set up map
     fig = plt.figure(figsize=(12, 8))
     ax = plt.axes(projection=ccrs.PlateCarree())
-    ax.set_title("Real-Time Earthquakes (Past 7 Days)", fontsize=15)
+    # Set title with ocean blue color
+    ax.set_title("Real-Time Earthquakes (Past 7 Days)", fontsize=15, pad=25, color='#006994')
     ax.add_feature(cfeature.LAND)
     ax.add_feature(cfeature.OCEAN)
     ax.add_feature(cfeature.COASTLINE)
