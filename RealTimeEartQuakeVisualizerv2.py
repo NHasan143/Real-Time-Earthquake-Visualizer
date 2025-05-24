@@ -5,6 +5,7 @@ import cartopy.feature as cfeature
 import logging
 import argparse
 from matplotlib.lines import Line2D
+import cartopy.io.shapereader as shpreader
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -13,12 +14,14 @@ logger = logging.getLogger(__name__)
 # USGS API Endpoint
 BASE_URL = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/{}.geojson'
 
+
 def parse_args():
     parser = argparse.ArgumentParser(description='Plot recent earthquakes.')
     parser.add_argument('--timeframe', default='all_week', choices=['all_hour', 'all_day', 'all_week', 'all_month'],
                         help='Time range for earthquake data')
     parser.add_argument('--output', help='Save plot to file (e.g., output.png)')
     return parser.parse_args()
+
 
 def fetch_earthquake_data(url):
     try:
@@ -32,6 +35,7 @@ def fetch_earthquake_data(url):
         logger.error(f"JSON parsing error: {e}")
         raise
 
+
 def plot_earthquakes(data):
     # Set up map
     fig = plt.figure(figsize=(12, 8))
@@ -39,6 +43,30 @@ def plot_earthquakes(data):
     # Set title with ocean blue color
     ax.set_title("Real-Time Earthquakes (Past 7 Days)", fontsize=15, pad=25, color='#006994')
     ax.add_feature(cfeature.LAND)
+
+    # Define continent colors
+    continent_colors = {
+        'North America': '#F2CB05',
+        'South America': '#400036',
+        'Africa': '#8C031C',
+        'Asia': '#FF81D0',
+        'Europe': '#F24405',
+        'Australia': '#A83E51'
+    }
+
+    # Add colored continents
+    shapename = 'admin_0_countries'
+    shp = shpreader.natural_earth(resolution='110m', category='cultural', name=shapename)
+    reader = shpreader.Reader(shp)
+
+    for record in reader.records():
+        name = record.attributes['CONTINENT']
+        if name in continent_colors:
+            ax.add_geometries([record.geometry], ccrs.PlateCarree(),
+                              facecolor=continent_colors[name],
+                              edgecolor='black', linewidth=0.5)
+
+    # Add ocean and other features
     ax.add_feature(cfeature.OCEAN)
     ax.add_feature(cfeature.COASTLINE)
     ax.add_feature(cfeature.BORDERS, linestyle=':')
@@ -77,6 +105,7 @@ def plot_earthquakes(data):
     ax.legend(handles=legend_elements, loc='lower left', title='Magnitude')
 
     return fig
+
 
 if __name__ == '__main__':
     args = parse_args()
